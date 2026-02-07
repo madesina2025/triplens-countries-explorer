@@ -2,6 +2,24 @@
 
 **Travel-Ready Analytics from Public Data**
 
+
+## Table of Contents
+
+1. [Project Overview](#project-overview)
+2. [Problem Statement](#problem-statement)
+3. [Solution Summary](#solution-summary)
+4. [High-Level Architecture](#high-level-architecture)
+5. [Architecture Diagram](#architecture-diagram)
+6. [Data Pipeline Logic](#data-pipeline-logic)
+7. [Project Structure](#project-structure)
+8. [How to Run Locally](#how-to-run-locally)
+9. [Access Services](#access-services)
+10. [Outputs](#outputs)
+11. [Roadmap & Enhancements](#roadmap--enhancements)
+
+
+
+
 ## Overview
 
 **TripLens Countries Explorer** is an end-to-end **data engineering pipeline** that transforms public country-level data into **analytics-ready insights** for tourists, travellers, and digital products focused on travel intelligence.
