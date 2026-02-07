@@ -118,11 +118,14 @@ triplens-countries-explorer/
 ├── requirements.txt
 └── README.md
 
+---
+
 ## Access Services
 
 Once the platform is running locally, the following services are available:
 
-- **Apache Airflow UI**: http://localhost:8080  
+
+##  **Apache Airflow UI**: http://localhost:8080  
   Used to monitor, trigger, and manage the `triplens-explorer` DAG.
 
 To execute the pipeline end-to-end:
