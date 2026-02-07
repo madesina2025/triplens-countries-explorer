@@ -105,7 +105,7 @@ The design supports future extension to additional data sources or real-time ing
 
 ## Project Structure
 
-```text
+
 triplens-countries-explorer/
 ├── airflow/                 # Airflow DAGs and orchestration logic
 │   ├── dags/
