@@ -102,7 +102,7 @@ End-to-end data flow from ingestion to analytics:
 The design supports future extension to additional data sources or real-time ingestion patterns.
 
 ---
-
+'''tex
 ## Project Structure
 
 --
