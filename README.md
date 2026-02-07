@@ -102,10 +102,11 @@ End-to-end data flow from ingestion to analytics:
 The design supports future extension to additional data sources or real-time ingestion patterns.
 
 ---
-'''tex
+
+
 ## Project Structure
 
---
+<pre>
 triplens-countries-explorer/
 ├── airflow/                 # Airflow DAGs and orchestration logic
 │   ├── dags/
@@ -117,6 +118,7 @@ triplens-countries-explorer/
 ├── docker-compose.override.yml
 ├── requirements.txt
 └── README.md
+</pre>
 
 ---
 
