@@ -118,3 +118,37 @@ triplens-countries-explorer/
 ├── requirements.txt
 └── README.md
 
+## Access Services
+
+Once the platform is running locally, the following services are available:
+
+- **Apache Airflow UI**: http://localhost:8080  
+  Used to monitor, trigger, and manage the `triplens-explorer` DAG.
+
+To execute the pipeline end-to-end:
+1. Open the Airflow UI
+2. Locate the `triplens-explorer` DAG
+3. Trigger the DAG manually to start ingestion, transformation, and data delivery
+
+Environment variables (API keys, credentials, configuration) are managed via a `.env` file and are intentionally **not committed to GitHub**.
+
+---
+
+## Outputs
+
+The pipeline produces **analytics-ready outputs** designed for consumption by BI and downstream applications:
+
+- **Snowflake Analytics Tables**  
+  Clean, standardised country datasets optimised for analytical queries.
+
+- **Dimensional Models**  
+  Curated dimensions and fact-style tables suitable for reporting and aggregation.
+
+- **Power BI Dashboards**  
+  Interactive dashboards enabling:
+  - Country-to-country comparison  
+  - Regional and continental insights  
+  - Travel planning and destination analysis  
+
+These outputs demonstrate how raw public data can be transformed into **decision-ready analytics** using modern data engineering practices.
+
