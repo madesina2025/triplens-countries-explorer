@@ -4,7 +4,7 @@
 
 TripLens Countries Explorer is a modern data engineering pipeline that transforms public country-level data into **analytics-ready datasets** for travellers, analysts, and decision-makers exploring new destinations.
 
-The project demonstrates how a real-world travel intelligence or tourism analytics platform would ingest, process, and expose country data using cloud-native and analytics engineering best practices.
+This project models a production-style data engineering workflow designed to reflect how modern analytics platforms ingest, orchestrate, and transform public data into analytics-ready datasets. The pipeline emphasizes reliability, modular design, and clear separation of concerns, mirroring real-world practices used in cloud-native data platforms. While implemented locally, the architecture is designed to scale to cloud environments and supports future extensions such as additional data sources or real-time ingestion patterns.
 
 ---
 
