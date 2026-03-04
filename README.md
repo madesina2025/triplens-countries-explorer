@@ -27,13 +27,14 @@ This project models a production-style data engineering workflow designed to ref
 
 ## Project Overview
 
-Travellers and travel platforms often rely on fragmented data sources when researching new destinations. TripLens consolidates multiple public data sources into a **single, trusted analytics layer**, enabling:
+TripLens consolidates multiple public API data sources into a single, trusted analytics layer, enabling:
 
-- Faster decision-making for travellers  
-- Reusable datasets for travel and tourism platforms  
-- BI-ready models for dashboards and reporting  
+- Faster decision making for travellers to understand essential informations about the new destinations  
+- Reusable datasets for travel and tourism platforms 
+- Business Intelligence ready models for dashboards and reporting
+- Provides helpful background details that can influence planning and decision making for tourists and travelers
 
-The pipeline focuses on essential country attributes such as **region, language, currency, time zones, neighbouring countries**, and other contextual data that influence travel planning and relocation decisions.
+The pipeline focuses on essential country attributes such as region, language, currency, time zones, neighbouring countries, and other contextual data that influence travel planning and relocation decisions.
 
 ---
 
@@ -43,7 +44,7 @@ Public country data is widely available but often:
 
 - Distributed across multiple APIs and sources  
 - Inconsistent in structure and quality  
-- Not optimised for analytics or BI consumption  
+- Not optimised for analytics or Business Intelligence consumption  
 
 This fragmentation makes it difficult to build reliable dashboards or analytics products without significant data engineering effort.
 
@@ -51,14 +52,14 @@ This fragmentation makes it difficult to build reliable dashboards or analytics 
 
 ## Solution Summary
 
-TripLens addresses this problem by implementing a **lake → warehouse → analytics** architecture that:
+TripLens addresses this problem by implementing a data ingestion (python) → data lake (MINIO - S3 compliance) → warehouse → analytics architecture that:
 
 - Extracts and standardises public API data using Python  
-- Persists raw data in a cloud-based data lake  
+- Persists raw data in a cloud-based data lake (MINIO)  
 - Loads and transforms data in Snowflake using dbt  
-- Exposes clean, analytics-ready datasets for BI tools such as Power BI  
+- Exposes clean, analytics ready datasets for BI tools such as Power BI  
 
-The solution is containerised, orchestrated with Airflow, and designed for extensibility.
+The solution is containerised with docker, orchestrated with Airflow, and designed for extensibility.
 
 ---
 
