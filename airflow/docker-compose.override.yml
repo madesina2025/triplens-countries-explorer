@@ -1,26 +1,35 @@
 
 services:
+
+  # scheduler:
+  #   volumes:
+  #     - ./airflow/.dbt:/home/astro/.dbt
+  # webserver:
+  #   volumes:
+  #     - ./airflow/.dbt:/home/astro/.dbt
   minio:
-    image: minio/minio:latest
-    container_name: minio
+    image: minio/minio:RELEASE.2025-07-23T15-54-02Z
+    container_name: triplens_minio
     environment:
-      MINIO_ROOT_USER: admin
-      MINIO_ROOT_PASSWORD: admin12345
-      # MINIO_ROOT_USER: ${MINIO_ROOT_USER}
-      # MINIO_ROOT_PASSWORD:  ${MINIO_ROOT_PASSWORD}
+      # MINIO_ROOT_USER: admin
+      # MINIO_ROOT_PASSWORD: admin12345
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD:  ${MINIO_ROOT_PASSWORD}
     command: server /data --console-address ":9001"
     ports:
-      - "29000:9000"  # MiniIO API
-      - "29001:9001"  # MiniIO Console
+      - "29100:9000"  # MiniIO API
+      - "29101:9001"  # MiniIO Console
     restart: unless-stopped
     volumes: 
       - minio_data:/data 
       - minio_config:/root/.minio 
-
     networks:
       - travel_network
+      - airflow
 volumes:
   minio_data:
   minio_config:
+
 networks:
   travel_network: {}
+  airflow:

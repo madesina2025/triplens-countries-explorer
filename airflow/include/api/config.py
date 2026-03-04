@@ -13,6 +13,7 @@ data_dir.mkdir(parents=True, exist_ok=True)
 
 
 # minIO endpoints
-url_endpoint = os.getenv('MINIO_ENDPOINT', 'http://localhost:29001')
+# url_endpoint = os.getenv('MINIO_ENDPOINT', 'http://localhost:29001')
+url_endpoint = os.getenv("MINIO_ENDPOINT")  # http://minio:9000
 access_key = os.getenv('MINIO_ROOT_USER')
 secret_key = os.getenv('MINIO_ROOT_PASSWORD')

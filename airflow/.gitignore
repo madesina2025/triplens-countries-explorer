@@ -13,3 +13,5 @@ airflow.db
 .airflow/
 *.pptx
 *.ppt
+data_bank
+set_env.sh

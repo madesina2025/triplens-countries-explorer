@@ -1,3 +1,24 @@
 .env
 data_bank
-venv
+
+# Environment files
+.env
+airflow/.env
+.env.*
+
+
+# Virtual environment
+venv/
+.venv/
+
+# Airflow
+airflow/logs/
+airflow/airflow.db
+airflow/*.db
+airflow/unittests.cfg
+
+# Data
+data/
+*.csv
+*.parquet
+*.json
