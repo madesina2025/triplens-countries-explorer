@@ -68,7 +68,7 @@ The solution is containerised with docker, orchestrated with Airflow, and design
 The pipeline follows a modern batch analytics architecture:
 
 - **Ingestion**: Python-based API extraction orchestrated by Airflow  
-- **Storage**: Amazon S3 as the raw data lake  
+- **Storage**: MINIO (Amazon S3 complaince) as the raw data lake  
 - **Warehouse**: Snowflake for staging and analytics layers  
 - **Transformation**: dbt for data modelling and enrichment  
 - **Analytics**: Power BI dashboards for insights and reporting  
@@ -92,7 +92,7 @@ End-to-end data flow from ingestion to analytics:
    Raw JSON/CSV data is persisted to Amazon S3 as the system of record.
 
 3. **Warehouse Ingestion**  
-   Snowflake ingests raw data from S3 into staging and raw tables.
+   Snowflake ingests raw data from MINIO (S3) into staging and raw tables.
 
 4. **Transformation**  
    dbt models apply cleaning, enrichment, and joins to create curated datasets.
@@ -109,15 +109,43 @@ The design supports future extension to additional data sources or real-time ing
 
 <pre>
 triplens-countries-explorer/
-├── airflow/                 # Airflow DAGs and orchestration logic
-│   ├── dags/
-│   ├── include/
-│   └── tests/
-├── data/                    # Raw and processed datasets (local/dev only)
-├── data_bank/               # Reference / lookup datasets
+│
+├── airflow/                         # Airflow orchestration layer
+│   ├── .astro/                      # Astro CLI configuration
+│   ├── dags/                        # DAG definitions
+│   │   └── triplens-explorer.py
+│   ├── include/                     # Reusable helper modules
+│   │   └── api/
+│   │       ├── load_to_bucket.py
+│   │       └── load_to_snowflake.py
+│   ├── plugins/                     # Airflow plugins (if any)
+│   └── tests/                       # DAG integrity tests
+│
+├── dbt/                             # dbt transformation project
+│   └── dbt_triplens/
+│       ├── dbt_project.yml
+│       ├── models/
+│       │   ├── bronze/
+│       │   ├── silver/
+│       │   └── gold/
+│       ├── macros/
+│       ├── snapshots/
+│       └── seeds/
+│
+├── data/                            # Local development raw data
+│   └── countries_raw.json
+│
+├── data_bank/                       # Reference / supporting datasets
+│
+├── triplens/                        # Additional project utilities
+│
 ├── Dockerfile
 ├── docker-compose.override.yml
 ├── requirements.txt
+├── packages.txt
+├── .env
+├── .dockerignore
+├── .gitignore
 └── README.md
 </pre>
 
