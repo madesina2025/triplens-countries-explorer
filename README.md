@@ -79,8 +79,7 @@ The pipeline follows a modern batch analytics architecture:
 
 End-to-end data flow from ingestion to analytics:
 
-#![TripLens Architecture](TripLens_Countries_Explorer_Diagram.drawio.png)
-![TripLens_Countries_Explorer_Diagram.drawio.png](./doc/TripLens_Countries_Explorer_Diagram.drawio.png)
+!./doc/TripLens_Countries_Explorer_Diagram.drawio.png
 
 
 ---
