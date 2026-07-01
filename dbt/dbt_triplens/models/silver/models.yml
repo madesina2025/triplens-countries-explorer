@@ -1,0 +1,12 @@
+models:
+  - name: silver  
+    columns:
+      - name: country_name
+        data_tests:
+          - unique
+          - not_null
+      - name: official_name
+        data_tests:
+          - relationships:
+              to: ref('dim_customers') # Test for referental integrity
+              field: customer_id
