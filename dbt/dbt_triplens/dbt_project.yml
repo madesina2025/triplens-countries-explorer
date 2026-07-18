@@ -31,10 +31,15 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   dbt_triplens:
-    # Config indicated by + and applies to all files under models/example/
     bronze:
       +materialized: view
-      +schema: bronze
+      +schema: BRONZE
     silver:
       +materialized: table
-      +schema: silver
+      +schema: SILVER
+    gold:
+      +materialized: table
+      +schema: GOLD
+    marts:
+      +materialized: table
+      +schema: ANALYTICS

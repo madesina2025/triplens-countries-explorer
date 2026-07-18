@@ -1,7 +1,0 @@
-name: "dbt_triplens"
-version: "1.0.0"
-config-version: 2
-profile: "dbt_triplens"
-model-paths: ["models"]
-target-path: "target"
-clean-targets: ["target", "dbt_packages"]

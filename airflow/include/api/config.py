@@ -2,9 +2,13 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 
+# urls = {
+#     "url_1" : "https://restcountries.com/v3.1/all?fields=name,independent,unNumber,startofWeek,currencies,idd,region,subregion,language",
+#     "url_2" : "https://restcountries.com/v3.1/all?fields=area,population,continents"
+# }
+
 urls = {
-    "url_1" : "https://restcountries.com/v3.1/all?fields=name,independent,unNumber,startofWeek,currencies,idd,region,subregion,language",
-    "url_2" : "https://restcountries.com/v3.1/all?fields=area,population,continents"
+    "url_1": "https://api.restcountries.com/countries/v5"
 }
 
 parent_dir = Path(__file__).resolve().parent

@@ -1,17 +1,100 @@
-.git
+# ============================================================
+# Secrets and environment files
+# ============================================================
 .env
-.DS_Store
-airflow_settings.yaml
-__pycache__/
-astro
-.venv
-airflow-webserver.pid
-webserver_config.py
-airflow.cfg
-airflow.db
-*.log
-.airflow/
-*.pptx
-*.ppt
-data_bank
+.env.*
+!.env.example
+airflow/.env
+**/.env
+
 set_env.sh
+**/set_env.sh
+
+# dbt / Snowflake credentials
+profiles.yml
+**/profiles.yml
+*.key
+*.pem
+*.p8
+
+# ============================================================
+# Python
+# ============================================================
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+ENV/
+
+# ============================================================
+# Airflow local/runtime files
+# ============================================================
+airflow.db
+*.db
+airflow.cfg
+webserver_config.py
+airflow-webserver.pid
+*.pid
+.airflow/
+logs/
+airflow/logs/
+**/logs/
+*.log
+
+# ============================================================
+# Astro local files
+# ============================================================
+.astro/
+astro/
+
+# ============================================================
+# dbt generated folders
+# ============================================================
+dbt_packages/
+target/
+dbt/dbt_triplens/dbt_packages/
+dbt/dbt_triplens/target/
+dbt/dbt_triplens/logs/
+dbt.log
+
+# ============================================================
+# Local data and downloads
+# ============================================================
+data_bank/
+airflow/include/api/data_bank/
+*.json.tmp
+
+# Keep portfolio sample data only when intentionally required
+# countries.json
+
+# ============================================================
+# macOS
+# ============================================================
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ============================================================
+# IDE
+# ============================================================
+.vscode/
+.idea/
+
+# ============================================================
+# Test and cache files
+# ============================================================
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# ============================================================
+# Temporary and backup files
+# ============================================================
+*.tmp
+*.temp
+*.bak
+*.swp

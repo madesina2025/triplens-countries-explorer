@@ -1,12 +1,39 @@
+version: 2
+
 models:
-  - name: silver  
+  - name: triplens_countries
+    description: >
+      Cleaned and flattened country records transformed from the raw
+      REST Countries API JSON payload.
+
     columns:
       - name: country_name
+        description: Common English name of the country.
         data_tests:
-          - unique
           - not_null
+          - unique
+
       - name: official_name
+        description: Official country name.
         data_tests:
-          - relationships:
-              to: ref('dim_customers') # Test for referental integrity
-              field: customer_id
+          - not_null
+
+      - name: continent
+        description: Continent assigned to the country.
+        data_tests:
+          - not_null
+
+      - name: region
+        description: Geographical region.
+        data_tests:
+          - not_null
+
+      - name: population
+        description: Reported country population.
+        data_tests:
+          - not_null
+
+      - name: area_km2
+        description: Country area measured in square kilometres.
+        data_tests:
+          - not_null

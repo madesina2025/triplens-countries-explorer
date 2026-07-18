@@ -39,16 +39,16 @@ def transfer_minio_json_to_snowflake(bucket: str, file_key: str, target_table: s
     try:
         # Create file format + internal stage
         cs.execute("USE SCHEMA TRIPLENS.RAW")
-        cs.execute("CREATE OR REPLACE FILE FORMAT TRIPLENS.RAW.JSON_FF TYPE = JSON;")
+        cs.execute("CREATE OR REPLACE FILE FORMAT TRIPLENS.RAW.JSON_FF TYPE = JSON")
+       # cs.execute("CREATE OR REPLACE STAGE TRIPLENS.RAW.TRIPLENS_INT_STAGE FILE_FORMAT = TRIPLENS.RAW.JSON_FF;")
         cs.execute("CREATE OR REPLACE STAGE TRIPLENS.RAW.TRIPLENS_INT_STAGE FILE_FORMAT = TRIPLENS.RAW.JSON_FF;")
-
         cs.execute("""
             CREATE OR REPLACE TABLE TRIPLENS.RAW.COUNTRIES_RAW (
-                ingestion_ts TIMESTAMP_NTZ,
-                src_file STRING,
-                payload VARIANT
+                   ingestion_ts TIMESTAMP_NTZ,
+                   src_file STRING,
+                   payload VARIANT
             );
-        """)
+    """)
         # PUT the local file into the Snowflake internal stage
         # AUTO_COMPRESS can be TRUE (Snowflake will gzip it automatically)
         # cs.execute(f"PUT file://{local_temp_path} @TRIPLENS_STAGE AUTO_COMPRESS=TRUE OVERWRITE=TRUE")
@@ -57,11 +57,12 @@ def transfer_minio_json_to_snowflake(bucket: str, file_key: str, target_table: s
         # COPY JSON from stage into target table
         # Loads JSON into a VARIANT column via $1; also captures filename + ingestion time
         #cs.execute(f"TRUNCATE TABLE {target_table};")
+        cs.execute(f"TRUNCATE TABLE {target_table};")
         cs.execute(f"""
             COPY INTO {target_table} (ingestion_ts, src_file, payload)
             FROM (
               SELECT CURRENT_TIMESTAMP(), METADATA$FILENAME, $1
-              FROM @TRIPLENS_INT_STAGE
+              FROM @TRIPLENS.RAW.TRIPLENS_INT_STAGE
             )
             FILE_FORMAT = (TYPE = JSON)
             ON_ERROR = 'ABORT_STATEMENT'

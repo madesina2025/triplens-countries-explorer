@@ -1,0 +1,102 @@
+version: 2
+
+models:
+  - name: gold_continent_summary
+    description: Aggregated country, population and area metrics by continent.
+    columns:
+      - name: continent
+        tests:
+          - not_null
+          - unique
+
+      - name: total_countries
+        tests:
+          - not_null
+
+      - name: total_population
+        tests:
+          - not_null
+
+  - name: gold_region_summary
+    description: Aggregated metrics by continent, region and subregion.
+    columns:
+      - name: continent
+        tests:
+          - not_null
+
+      - name: region
+        tests:
+          - not_null
+
+      - name: subregion
+        tests:
+          - not_null
+
+      - name: total_countries
+        tests:
+          - not_null
+
+      - name: total_population
+        tests:
+          - not_null
+
+  - name: gold_population_ranking
+    description: Country-level population ranking, density and population bands.
+    columns:
+      - name: country_name
+        tests:
+          - not_null
+          - unique
+
+      - name: population_rank
+        tests:
+          - not_null
+          - unique
+
+      - name: population
+        tests:
+          - not_null
+
+      - name: population_band
+        tests:
+          - not_null
+
+  - name: gold_language_summary
+    description: Primary-language usage and population summary.
+    columns:
+      - name: language_name
+        tests:
+          - not_null
+          - unique
+
+      - name: total_countries
+        tests:
+          - not_null
+
+      - name: combined_population
+        tests:
+          - not_null
+
+  - name: gold_currency_summary
+    description: Currency-level usage and population summary.
+
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - currency_code
+              - currency_name
+              - currency_symbol
+
+    columns:
+      - name: currency_code
+        tests:
+          - not_null
+
+      - name: total_countries
+        tests:
+          - not_null
+
+      - name: combined_population
+        tests:
+          - not_null

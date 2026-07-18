@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: analytics_country_overview
+    description: Main analytics-ready country-level dataset for dashboards.
+    columns:
+      - name: country_name
+        tests:
+          - not_null
+          - unique
+
+      - name: population
+        tests:
+          - not_null
+
+      - name: population_rank
+        tests:
+          - not_null
+          - unique
+
+      - name: continent
+        tests:
+          - not_null
+
+  - name: analytics_global_kpis
+    description: Single-row global KPI dataset for dashboard summary cards.
+    columns:
+      - name: total_countries
+        tests:
+          - not_null
+
+      - name: global_population
+        tests:
+          - not_null
+
+      - name: total_area_km2
+        tests:
+          - not_null
